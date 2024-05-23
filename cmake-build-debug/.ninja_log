@@ -1,0 +1,18 @@
+# ninja log v5
+5	482	1716399097790174924	CMakeFiles/School_Management_System.dir/test.cpp.o	8c565515b77fd11a
+648	764	1716466701019935469	School_Management_System	98b2ba8dd27970a8
+16	642	1716466700895417215	CMakeFiles/School_Management_System.dir/commands.cpp.o	7ab2140e0ace5099
+3	214	1716468168604502233	build.ninja	a4e7248694c5c0ad
+3	48	1716468168604502233	build.ninja	a4e7248694c5c0ad
+3	462	1716468169068774525	CMakeFiles/School_Management_System.dir/login_S_T.cpp.o	2dd5c2f731884859
+2	464	1716468169070630050	CMakeFiles/School_Management_System.dir/test.cpp.o	8c565515b77fd11a
+3	498	1716468169103452218	CMakeFiles/School_Management_System.dir/commands.cpp.o	7ab2140e0ace5099
+498	609	1716468169216864098	School_Management_System	b6f4d6baeebf22dc
+6	586	1716472028528951098	CMakeFiles/School_Management_System.dir/commands.cpp.o	7ab2140e0ace5099
+588	704	1716472028647998365	School_Management_System	b6f4d6baeebf22dc
+12	589	1716481640015605294	CMakeFiles/School_Management_System.dir/test.cpp.o	8c565515b77fd11a
+13	593	1716481640015109547	CMakeFiles/School_Management_System.dir/login_S_T.cpp.o	2dd5c2f731884859
+13	636	1716481640062118701	CMakeFiles/School_Management_System.dir/commands.cpp.o	7ab2140e0ace5099
+636	759	1716481640186388062	School_Management_System	b6f4d6baeebf22dc
+5	618	1716482018227200616	CMakeFiles/School_Management_System.dir/commands.cpp.o	7ab2140e0ace5099
+621	738	1716482018352319597	School_Management_System	b6f4d6baeebf22dc
