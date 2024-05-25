@@ -1,7 +1,0 @@
-# ninja log v5
-621	738	1716482018352319597	School_Management_System	b6f4d6baeebf22dc
-3	48	7383301045632609	build.ninja	a4e7248694c5c0ad
-17	733	7383302483642056	CMakeFiles/School_Management_System.dir/login_S_T.cpp.obj	dc5272f992892623
-8	780	7383302484093008	CMakeFiles/School_Management_System.dir/test.cpp.obj	b7ceff14bfaae9c
-0	1047	7383302486749733	CMakeFiles/School_Management_System.dir/commands.cpp.obj	b956c8e43738ef4b
-1048	1353	7383302489630205	School_Management_System.exe	602430f1b9fbd3e5

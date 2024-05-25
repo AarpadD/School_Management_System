@@ -1,3 +1,0 @@
-C:/Users/MelissaAsus/Desktop/faculta/anu1,s2/pp/cmake-build-debug/CMakeFiles/School_Management_System.dir
-C:/Users/MelissaAsus/Desktop/faculta/anu1,s2/pp/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/MelissaAsus/Desktop/faculta/anu1,s2/pp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
