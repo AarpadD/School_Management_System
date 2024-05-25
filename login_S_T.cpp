@@ -11,15 +11,17 @@ std::pair<bool, std::string> verify_login(int id, const std::string& password, c
         return std::make_pair(false, "");
     }
 
-    std::string line;
-    while (std::getline(file, line)) {
-        std::istringstream ss(line);
-        std::string name, surname, dob, extra;
-        int readId;
-        std::string readPassword;
+    std::string name, surname, dob, extra;
+    int readId;
+    std::string readPassword;
 
-        ss >> name >> surname >> dob >> extra >> readId >> readPassword;
-
+    while (std::getline(file, name)
+           && std::getline(file, surname)
+           && std::getline(file, dob)
+           && std::getline(file, extra)
+           && file >> readId
+           && file >> readPassword) {
+        file.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignore the rest of the line
         if (id == readId && password == readPassword) {
             return std::make_pair(true, name + " " + surname);
         }
