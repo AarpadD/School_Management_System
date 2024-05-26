@@ -9,25 +9,27 @@
 
 
 void create_acc() {
-    std::cout << "Choose account type:\n"
-              << "1. Student Account\n"
-              << "2. Teacher Account\n";
+    std::cout << "\n\tAccount type:\n"
+              << "\t1. Student Account\n"
+              << "\t2. Teacher Account\n"
+              << "\tEnter your option: ";
 
     int option;
     std::cin >> option;
+
 
     switch(option) {
         case 1: {  // Create Student Account
             std::string name, surname, dob;
             int grade;
 
-            std::cout << "\nEnter name: ";
+            std::cout << "\n\tEnter name: ";
             std::cin >> name;
-            std::cout << "Enter surname: ";
+            std::cout << "\tEnter surname: ";
             std::cin >> surname;
-            std::cout << "Enter date of birth (dd/mm/yyyy): ";
+            std::cout << "\tEnter date of birth (dd/mm/yyyy): ";
             std::cin >> dob;
-            std::cout << "Enter grade: ";
+            std::cout << "\tEnter grade: ";
             std::cin >> grade;
 
             std::random_device rd;
@@ -39,7 +41,7 @@ void create_acc() {
 
             std::ofstream file("student_acc.txt", std::ios::app);  // open file in append mode
             if (!file.is_open()) {
-                std::cout << "Error opening file\n";
+                std::cout << "\t<Error opening file>\n";
                 return;
             }
 
@@ -50,7 +52,23 @@ void create_acc() {
                  << ID << '\n'
                  << password << '\n';
 
-            std::cout << "Student account created successfully. ID: " << ID << ", Password: " << password << "\n";
+            file.close();
+
+            std::string studentFileName = "student_" + std::to_string(ID) + ".txt";
+            std::ofstream studentFile(studentFileName);
+
+            if (!studentFile.is_open()) {
+                std::cout << "\t<Error creating student's file>\n";
+                return;
+            }
+
+            studentFile << "Name: " << name << " " << surname << '\n'
+                        << "Grade: " << grade << '\n'
+                        << "ID: " << ID << '\n';
+
+            studentFile.close();
+
+            std::cout << "\tStudent account created successfully. ID: " << ID << ", Password: " << password << "\n";
 
             break;
         }
@@ -58,13 +76,13 @@ void create_acc() {
         case 2: {
             std::string name, surname, dob, subject;
 
-            std::cout << "\nEnter name: ";
+            std::cout << "\n\tEnter name: ";
             std::cin >> name;
-            std::cout << "Enter surname: ";
+            std::cout << "\tEnter surname: ";
             std::cin >> surname;
-            std::cout << "Enter date of birth (dd/mm/yyyy): ";
+            std::cout << "\tEnter date of birth (dd/mm/yyyy): ";
             std::cin >> dob;
-            std::cout << "Enter subject: ";
+            std::cout << "\tEnter subject: ";
             std::cin >> subject;
 
             std::random_device rd;
@@ -76,7 +94,7 @@ void create_acc() {
 
             std::ofstream file("teacher_acc.txt", std::ios::app);  // open file in append mode
             if (!file.is_open()) {
-                std::cout << "Error opening file\n";
+                std::cout << "\t<Error opening file>\n";
                 return;
             }
 
@@ -87,26 +105,43 @@ void create_acc() {
                  << ID << '\n'
                  << password << '\n';
 
-            std::cout << "Teacher account created successfully. ID: " << ID << ", Password: " << password << "\n";
+            file.close();
+
+            std::string teacherFileName = "teacher_" + subject + ".txt";
+            std::ofstream teacherFile(teacherFileName);
+
+            if (!teacherFile.is_open()) {
+                std::cout << "\t<Error creating teacher's file>\n";
+                return;
+            }
+
+            teacherFile << "Name: " << name << " " << surname << '\n'
+                        << "Subject: " << subject << '\n'
+                        << "ID: " << ID << '\n';
+
+            teacherFile.close();
+
+            std::cout << "\tTeacher account created successfully. ID: " << ID << ", Password: " << password << "\n";
 
             break;
         }
         default:
-            std::cout << "Invalid option chosen.\n";
+            std::cout << "\t<Invalid option chosen.>\n";
     }
 
 }
 
 void delete_acc() {
-    std::cout << "Choose account type:\n"
-              << "1. Student Account\n"
-              << "2. Teacher Account\n";
+    std::cout << "\n\tAccount type:\n"
+                 "\t1. Student Account\n"
+                 "\t2. Teacher Account\n"
+                 "\tEnter your option: ";
 
     int option;
     std::cin >> option;
 
     int idToBeDeleted;
-    std::cout << "Enter ID of the account to be deleted: ";
+    std::cout << "\n\tEnter ID of the account to be deleted: ";
     std::cin >> idToBeDeleted;
 
     std::string tempFile = "temp.txt";
@@ -116,7 +151,7 @@ void delete_acc() {
     std::ofstream tempOutput(tempFile);
 
     if (!inputFile || !tempOutput) {
-        std::cout << "Problem opening file.\n";
+        std::cout << "\t<Problem opening file.>\n";
         return;
     }
 
@@ -153,51 +188,54 @@ void delete_acc() {
     remove(accountFile.c_str());
     rename(tempFile.c_str(), accountFile.c_str());
 
-    std::cout << (option == 1 ? "Student" : "Teacher") << " account with id " << idToBeDeleted << " deleted successfully.\n";
+    std::cout << (option == 1 ? "\tStudent" : "\tTeacher") << " account with id " << idToBeDeleted << " deleted successfully.\n";
 }
 
 
 void view_accounts() {
-    std::cout << "Choose account type to view:\n"
-              << "1. Student Accounts\n"
-              << "2. Teacher Accounts\n";
+    std::cout << "\n\tAccount type:\n"
+                 "\t1. Student Account\n"
+                 "\t2. Teacher Account\n"
+                 "\tEnter your option: ";
 
     int option;
     std::cin >> option;
+    std::ifstream file;
 
-    if(option == 1) { // View All Student Accounts
-        std::ifstream file("student_acc.txt");
-        if(!file) {
-            std::cout << "File cannot be opened\n";
+    switch(option) {
+        case 1:
+            file.open("student_acc.txt");
+            break;
+        case 2:
+            file.open("teacher_acc.txt");
+            break;
+        default:
+            std::cout << "\t<Invalid option chosen.>\n";
             return;
-        }
+    }
 
-        std::cout << "Displaying all Student Accounts:\n";
-        std::string line;
-        while(getline(file, line)) {
-            std::cout << line << '\n';
-        }
+    if(!file) {
+        std::cout << "\t<File cannot be opened.>\n";
+        return;
+    } else if(file.peek() == EOF) {
+        std::cout << "\tThere are no " << (option == 1 ? "Student" : "Teacher") << " Accounts.\n";
+        return;
     }
-    else if(option == 2) { // View All Teacher Accounts
-        std::ifstream file("teacher_acc.txt");
-        if(!file) {
-            std::cout << "File cannot be opened\n";
-            return;
-        }
 
-        std::cout << "Displaying all Teacher Accounts:\n";
-        std::string line;
-        while(getline(file, line)) {
-            std::cout << line << '\n';
+    std::cout << "\n\tDisplaying all " << (option == 1 ? "Student" : "Teacher") << " Accounts:\n";
+
+    std::string line;
+    int lineCount = 0;
+    while(getline(file, line)) {
+        std::cout << "\t" <<line << '\n';
+        if (++lineCount % 6 == 0) {
+            // If we have printed out 6 lines of information (1 account), print out a separator line
+            std::cout << "\t-------------------------------------\n";
         }
     }
-    else {
-        std::cout << "Invalid option chosen.\n";
-    }
+
+    file.close();
 }
-
-
-
 
 
 
@@ -212,26 +250,34 @@ void display_account(const std::string& name, const std::string& surname, const 
 }
 
 
-
 void edit_acc() {
-    std::cout << "Choose account type to edit:\n"
-              << "1. Student Account\n"
-              << "2. Teacher Account\n";
+    std::cout << "\n\tAccount type:\n"
+                 "\t1. Student Account\n"
+                 "\t2. Teacher Account\n"
+                 "\tEnter your option: ";
 
     int option;
     std::cin >> option;
 
     if (option != 1 && option != 2) {
-        std::cout << "Invalid option.\n";
+        std::cout << "\t<Invalid option.>\n";
         return;
     }
 
+    std::string accountFile = (option == 1) ? "student_acc.txt" : "teacher_acc.txt";
+
+    std::ifstream checkFile(accountFile);
+    if(checkFile.peek() == EOF) {
+        std::cout << "\tThere are no " << (option == 1 ? "Student" : "Teacher") << " Accounts to edit.\n";
+        return;
+    }
+    checkFile.close();
+
     int idToBeEdited;
-    std::cout << "Enter ID of the account to be edited: ";
+    std::cout << "\n\tEnter ID of the account to be edited: ";
     std::cin >> idToBeEdited;
 
     std::string tempFile = "temp.txt";
-    std::string accountFile = (option == 1) ? "student_acc.txt" : "teacher_acc.txt";
 
     char anotherEdit;
     do {
@@ -241,7 +287,7 @@ void edit_acc() {
         std::ofstream tempOutput(tempFile);
 
         if (!inputFile || !tempOutput) {
-            std::cout << "Problem opening file.\n";
+            std::cout << "\t<Problem opening file.>\n";
             return;
         }
 
@@ -262,7 +308,7 @@ void edit_acc() {
 
             if (std::stoi(idString) == idToBeEdited) {
                 accountFound = true;
-                std::cout << "Current information for " << (option == 1 ? "Student" : "Teacher") << " account with id " << idToBeEdited << ":\n";
+                std::cout << "\n\tCurrent information for " << (option == 1 ? "Student" : "Teacher") << " account with id " << idToBeEdited << ":\n";
                 display_account(name, surname, dob, extra, idString, password, option);
                 break;
             }
@@ -270,15 +316,16 @@ void edit_acc() {
         inputFile.close();
 
         if(!accountFound) {
-            std::cout << "Account with ID " << idToBeEdited << " not found.\n";
+            std::cout << "\t<Account with ID " << idToBeEdited << " not found.>\n";
             return;
         }
 
-        std::cout << "Choose what you want to edit:\n"
-                  << "1. Name\n"
-                  << "2. Surname\n"
-                  << "3. Date of Birth\n"
-                  << "4. " << ((option == 1) ? "Grade" : "Subject") << "\n";
+        std::cout << "\n\tChoose what you want to edit:\n"
+                  << "\t1. Name\n"
+                  << "\t2. Surname\n"
+                  << "\t3. Date of Birth\n"
+                  << "\t4. " << ((option == 1) ? "Grade" : "Subject") << "\n"
+                  << "\tEnter your option: ";
 
         int editOption;
         std::cin >> editOption;
@@ -302,27 +349,27 @@ void edit_acc() {
             if (std::stoi(idString) == idToBeEdited) {
                 switch(editOption) {
                     case 1:
-                        std::cout << "Enter new name: ";
+                        std::cout << "\tEnter new name: ";
                         std::cin >> name;
                         break;
                     case 2:
-                        std::cout << "Enter new surname: ";
+                        std::cout << "\tEnter new surname: ";
                         std::cin >> surname;
                         break;
                     case 3:
-                        std::cout << "Enter new date of birth (dd/mm/yyyy): ";
+                        std::cout << "\tEnter new date of birth (dd/mm/yyyy): ";
                         std::cin >> dob;
                         break;
                     case 4:
                         if(option == 1) {
-                            std::cout << "Enter new grade: ";
+                            std::cout << "\tEnter new grade: ";
                         } else if(option == 2) {
-                            std::cout << "Enter new subject: ";
+                            std::cout << "\tEnter new subject: ";
                         }
                         std::cin >> extra;
                         break;
                     default:
-                        std::cout << "Invalid edit option chosen.\n";
+                        std::cout << "\t<Invalid edit option chosen.>\n";
                 }
             }
 
@@ -341,7 +388,8 @@ void edit_acc() {
         remove(accountFile.c_str());
         rename(tempFile.c_str(), accountFile.c_str());
 
-        std::cout << "Do you want to edit something else? (y/n)\n";
+        std::cout << "\n\tDo you want to edit something else? (y/n)\n"
+                     "\tEnter your option: ";
         std::cin >> anotherEdit;
     } while (tolower(anotherEdit) == 'y');
 }
