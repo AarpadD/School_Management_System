@@ -1,10 +1,14 @@
 #include <iostream>
 #include <cstdlib>
 #include "data_structures.h"
+#include <string.h>
 
 
 #ifdef _WIN32
 #define CLEAR "cls"
+
+//std::pair<bool, std::string> verify_login_justid(int id, std::string basicString);
+
 #else
 #define CLEAR "clear"
 #endif
@@ -16,6 +20,7 @@ int main(){
 
     int User_Type;
     int User_ID;
+    char ID;
     std::string User_Password;
 
     int tries = 0;
@@ -122,6 +127,23 @@ int main(){
                     name = result.second;
                     std::cout << "\tWelcome, " << name << "!\n";
                     // add menu generation and option handling
+                    //introducing name_"idstudent" for adding a grade so call the function add_grade()
+                    std::cout << "\tEnter student ID: ";
+                    std::cin >> User_ID;
+                    std::string name_of_student_file = "student";
+                    name_of_student_file += std::to_string(User_ID);
+                    std::pair<bool, std::string> result =  verify_login_justid(name_of_student_file, filename);
+
+                    if (result.first){
+
+                        add_grade();
+
+                    }else{
+
+                        std::cout << "You dind't entered the correct Id ";
+                    }
+
+
                 } else {
                     if (tries < 2) {
                         std::cout << "\t<Incorrect ID or Password. Please try again.>\n";
@@ -179,4 +201,5 @@ int main(){
 
     return 0;
 }
+
 

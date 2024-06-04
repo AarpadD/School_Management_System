@@ -9,4 +9,5 @@ add_executable(School_Management_System
         data_structures.h
         test.cpp
         commands.cpp
-        login_S_T.cpp)
+        login_S_T.cpp
+        addGrade.cpp)

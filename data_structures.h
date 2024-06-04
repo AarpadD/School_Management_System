@@ -22,4 +22,6 @@ void view_accounts();
 void edit_acc();
 void display_account(const std::string& name, const std::string& surname, const std::string& dob, const std::string& extra,
                      const std::string& idString, const std::string& password, int option);
+void add_grade();
+std::pair<bool, std::string>  verify_login_justid(std::string id, std::string basicString);
 #endif //SCHOOL_MANAGEMENT_SYSTEM_DATA_STRUCTURES_H

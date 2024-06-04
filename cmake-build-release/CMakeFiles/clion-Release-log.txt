@@ -1,0 +1,13 @@
+"C:\Users\MelissaAsus\AppData\Local\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_MAKE_PROGRAM=C:/Users/MelissaAsus/AppData/Local/JetBrains/CLion 2023.3.4/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\MelissaAsus\Desktop\faculta\anu1,s2\pp -B C:\Users\MelissaAsus\Desktop\faculta\anu1,s2\pp\cmake-build-release
+-- Configuring done (0.1s)
+CMake Error at CMakeLists.txt:8 (add_executable):
+  Cannot find source file:
+
+    addGrade.cpp
+
+
+CMake Error at CMakeLists.txt:8 (add_executable):
+  No SOURCES given to target: School_Management_System
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

@@ -62,9 +62,9 @@ void create_acc() {
                 return;
             }
 
-            studentFile << "Name: " << name << " " << surname << '\n'
-                        << "Grade: " << grade << '\n'
-                        << "ID: " << ID << '\n';
+            studentFile <<  name << " " << surname << '\n'
+                        <<  grade << '\n'
+                        << ID << '\n';
 
             studentFile.close();
 
