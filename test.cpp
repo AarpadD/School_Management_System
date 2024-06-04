@@ -13,10 +13,14 @@
 #define CLEAR "clear"
 #endif
 
+// add grade for students from profesor account
+
+//from profesor account, sa poti sa vezi elevii pe care ii are
+
 
 int main(){
     std::vector<User> headmaster;
-    headmaster.push_back(User(111, "dobidobi21"));
+    headmaster.push_back(User(111, "dobi"));
 
     int User_Type;
     int User_ID;
@@ -128,19 +132,45 @@ int main(){
                     std::cout << "\tWelcome, " << name << "!\n";
                     // add menu generation and option handling
                     //introducing name_"idstudent" for adding a grade so call the function add_grade()
+
+                    std::cout<<"Please choose:\n 1. Add student grade\n 2. See student grade\n";
+
+                    int prof_option ;
+
+                    std::cin>>prof_option;
+
+                    if (prof_option != 1 && prof_option != 2)
+                    {
+                        std::cout<<"Please choose a number between 1 and 2!";
+                    }
+
                     std::cout << "\tEnter student ID: ";
                     std::cin >> User_ID;
-                    std::string name_of_student_file = "student";
-                    name_of_student_file += std::to_string(User_ID);
-                    std::pair<bool, std::string> result =  verify_login_justid(name_of_student_file, filename);
+                    std::string name_of_student_file = "student_";
+                    name_of_student_file += std::to_string(User_ID) + ".txt";
+                    std::pair<bool, std::string> check_student =  verify_login_justid(name_of_student_file, filename);
 
-                    if (result.first){
 
-                        add_grade();
+                    std::string prof_subject = get_prof_subject(filename);
 
-                    }else{
+                    if (! check_student.first){
 
                         std::cout << "You dind't entered the correct Id ";
+                        exit(1);
+                    }
+                    else
+                    {
+                        std::cout << " Student has been found ";
+
+                    }
+
+
+                    switch (prof_option) {
+                        case 1: add_grade(prof_subject, name_of_student_file);
+                        case 2: see_all_grades(name_of_student_file);
+                        default: {}
+
+
                     }
 
 
@@ -176,7 +206,12 @@ int main(){
                     name_s = result.second;
 
                     std::cout << "\tWelcome, " << name_s << "!\n";
-                    // same here...add menu generation and option handling
+
+                    std::string name_of_student_file = "student_";
+                    name_of_student_file += std::to_string(User_ID) + ".txt";
+                    std::pair<bool, std::string> check_student =  verify_login_justid(name_of_student_file, filename);
+                    see_all_grades(name_of_student_file);
+
                 } else {
                     if (tries < 2) {
                         std::cout << "\t<Incorrect ID or Password. Please try again.>\n";

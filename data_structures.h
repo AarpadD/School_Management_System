@@ -22,6 +22,12 @@ void view_accounts();
 void edit_acc();
 void display_account(const std::string& name, const std::string& surname, const std::string& dob, const std::string& extra,
                      const std::string& idString, const std::string& password, int option);
-void add_grade();
+std::string get_prof_subject(const std::string& filename);
+
+void add_grade(std::string subject, std::string student_file);
+void see_all_grades(std::string student_file);
+
+void see_student();
+
 std::pair<bool, std::string>  verify_login_justid(std::string id, std::string basicString);
 #endif //SCHOOL_MANAGEMENT_SYSTEM_DATA_STRUCTURES_H

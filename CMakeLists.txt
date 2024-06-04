@@ -10,4 +10,5 @@ add_executable(School_Management_System
         test.cpp
         commands.cpp
         login_S_T.cpp
-        addGrade.cpp)
+#        addGrade.cpp
+)
