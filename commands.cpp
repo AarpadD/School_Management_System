@@ -19,7 +19,7 @@ void create_acc() {
 
 
     switch(option) {
-        case 1: {  // Create Student Account
+        case 1: {
             std::string name, surname, dob;
             int grade;
 
@@ -39,7 +39,7 @@ void create_acc() {
             int ID = dis(gen);
             int password = dis(gen);
 
-            std::ofstream file("student_acc.txt", std::ios::app);  // open file in append mode
+            std::ofstream file("student_acc.txt", std::ios::app);
             if (!file.is_open()) {
                 std::cout << "\t<Error opening file>\n";
                 return;
@@ -92,7 +92,7 @@ void create_acc() {
             int ID = dis(gen);
             int password = dis(gen);
 
-            std::ofstream file("teacher_acc.txt", std::ios::app);  // open file in append mode
+            std::ofstream file("teacher_acc.txt", std::ios::app);
             if (!file.is_open()) {
                 std::cout << "\t<Error opening file>\n";
                 return;
@@ -165,18 +165,15 @@ void delete_acc() {
 
             int id = std::stoi(idString);
             if(id != idToBeDeleted) {
-                // If IDs do not match, copy account details to the temp file.
                 tempOutput << firstName << '\n'
                            << lastName << '\n'
                            << dob << '\n'
                            << number << '\n'
                            << idString << '\n';
 
-                // Copy the password line as well
                 getline(inputFile, line);
                 tempOutput << line << '\n';
             } else {
-                // If IDs match, skip account's password line
                 getline(inputFile, line);
             }
         }
@@ -229,7 +226,6 @@ void view_accounts() {
     while(getline(file, line)) {
         std::cout << "\t" <<line << '\n';
         if (++lineCount % 6 == 0) {
-            // If we have printed out 6 lines of information (1 account), print out a separator line
             std::cout << "\t-------------------------------------\n";
         }
     }
@@ -281,7 +277,7 @@ void edit_acc() {
 
     char anotherEdit;
     do {
-        anotherEdit = 'n';  // reset the flag
+        anotherEdit = 'n';
 
         std::ifstream inputFile(accountFile);
         std::ofstream tempOutput(tempFile);
@@ -330,7 +326,6 @@ void edit_acc() {
         int editOption;
         std::cin >> editOption;
 
-        // Reopen the file and perform the account modification
         inputFile.open(accountFile);
 
         while (getline(inputFile, line)) {
@@ -381,7 +376,6 @@ void edit_acc() {
                        << password << "\n";
         }
 
-        // Close the files before renaming
         inputFile.close();
         tempOutput.close();
 
