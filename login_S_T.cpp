@@ -50,7 +50,7 @@ std::string get_prof_subject(const std::string& filename) {
            && std::getline(file, extra)
            && file >> readId
            && file >> readPassword) {
-        file.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignore the rest of the line
+        file.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 
         return extra;
 
