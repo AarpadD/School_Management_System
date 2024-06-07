@@ -59,7 +59,7 @@ int main(){
                             isLoggedIn = true;
                             std::system(CLEAR);
 
-                            while (running){
+//                            while (running){
                             std::cout << "\n\tMenu:\n";
                             std::cout << "\t1. Create Account\n";
                             std::cout << "\t2. Delete Account\n";
@@ -95,7 +95,7 @@ int main(){
                                 default:
                                     break;
                             }
-                            }
+//                            }
 
 
                             break;
