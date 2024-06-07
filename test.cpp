@@ -121,7 +121,7 @@ int main(){
                     std::system("CLEAR");
                     name = result.second;
                     std::cout << "\tWelcome, " << name << "!\n";
-                    // add menu generation and option handling
+                    // add menu
                 } else {
                     if (tries < 2) {
                         std::cout << "\t<Incorrect ID or Password. Please try again.>\n";
@@ -154,7 +154,7 @@ int main(){
                     name_s = result.second;
 
                     std::cout << "\tWelcome, " << name_s << "!\n";
-                    // same here...add menu generation and option handling
+                    // same here...add menu
                 } else {
                     if (tries < 2) {
                         std::cout << "\t<Incorrect ID or Password. Please try again.>\n";
