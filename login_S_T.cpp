@@ -22,7 +22,7 @@ std::pair<bool, std::string> verify_login(int id, const std::string& password, c
            && std::getline(file, extra)
            && file >> readId
            && file >> readPassword) {
-        file.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignore the rest of the line
+        file.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 
         std::cout<<"WWWW:"<<extra;
         if (id == readId && password == readPassword) {
