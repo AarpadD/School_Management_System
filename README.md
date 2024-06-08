@@ -10,4 +10,4 @@ School Management System Functionalities:
    - Login: Teachers log in with a password and ID number provided at account creation.
    - Grade and Attendance Management: Teachers can add grades and attendance records for students (student ID required).
 
-
+Each member's contribution can be seen on the branch assigned to him - arina - respectively - melissa -.
