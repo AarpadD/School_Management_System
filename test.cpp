@@ -6,15 +6,12 @@
 
 #ifdef _WIN32
 #define CLEAR "cls"
-
-//std::pair<bool, std::string> verify_login_justid(int id, std::string basicString);
-
 #else
 #define CLEAR "clear"
 #endif
 
 // add grade for students from profesor account
-
+//std::pair<bool, std::string> verify_login_justid(int id, std::string basicString);
 //from profesor account, sa poti sa vezi elevii pe care ii are
 
 
@@ -59,7 +56,7 @@ int main(){
                             isLoggedIn = true;
                             std::system(CLEAR);
 
-//                            while (running){
+                            while (running){
                             std::cout << "\n\tMenu:\n";
                             std::cout << "\t1. Create Account\n";
                             std::cout << "\t2. Delete Account\n";
@@ -95,7 +92,7 @@ int main(){
                                 default:
                                     break;
                             }
-//                            }
+                            }
 
 
                             break;
@@ -130,7 +127,6 @@ int main(){
                     std::system("CLEAR");
                     name = result.second;
                     std::cout << "\tWelcome, " << name << "!\n";
-                    // add menu generation and option handling
                     //introducing name_"idstudent" for adding a grade so call the function add_grade()
 
                     std::cout<<"Please choose:\n 1. Add student grade\n 2. See student grade\n";
@@ -174,7 +170,7 @@ int main(){
                     }
 
 
-                    // add menu
+                    
                 } else {
                     if (tries < 2) {
                         std::cout << "\t<Incorrect ID or Password. Please try again.>\n";
